@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unisex Beauty Studio - Digital Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(-45deg, #000000, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+            padding: 50px 30px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 215, 0, 0.1),
+                transparent
+            );
+            animation: shimmer 3s infinite;
+        }
+
+        .logo-container {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 30px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4),
+                        0 0 0 8px rgba(255, 255, 255, 0.1);
+            position: relative;
+            transform: rotate(-5deg);
+        }
+
+        .salon-name {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin: -25px 20px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .quick-btn {
+            background: white;
+            padding: 20px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .quick-btn:first-child {
+            border-radius: 15px 0 0 15px;
+        }
+
+        .quick-btn:last-child {
+            border-radius: 0 15px 15px 0;
+        }
+
+        .quick-btn:hover {
+            background: #f8f8f8;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-btn-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .quick-btn-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .contact-section {
+            padding: 35px 25px 25px;
+            background: #fafafa;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            animation: slideIn 0.6s ease backwards;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .services-section {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #000;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.6s ease backwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:active {
+            transform: scale(0.95);
+        }
+
+        .service-card-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .service-card-title {
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .social-section {
+            padding: 0 25px 35px;
+        }
+
+        .social-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.6s ease backwards;
+        }
+
+        .social-btn:nth-child(1) { animation-delay: 0.1s; }
+        .social-btn:nth-child(2) { animation-delay: 0.2s; }
+        .social-btn:nth-child(3) { animation-delay: 0.3s; }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .social-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .social-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .instagram-btn {
+            background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
+            box-shadow: 0 8px 25px rgba(253, 29, 29, 0.4);
+        }
+
+        .call-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-wrapper {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 40px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            margin-bottom: 40px;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #000000, #434343);
+            padding: 35px 25px;
+            border-radius: 25px 25px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 215, 0, 0.1),
+                transparent
+            );
+            animation: shimmer 3s infinite;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 26px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .modal-title-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .modal-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .modal-title-text {
+            flex: 1;
+        }
+
+        .modal-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .modal-body {
+            padding: 30px 25px;
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+
+        .service-category-section {
+            margin-bottom: 35px;
+        }
+
+        .service-category-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .category-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: linear-gradient(135deg, #fafafa, #f5f5f5);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .service-item:hover {
+            transform: translateX(5px);
+            border-left-color: #FFD700;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            background: linear-gradient(135deg, #fff, #fafafa);
+        }
+
+        .service-number {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #000000, #434343);
+            color: #FFD700;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .service-name {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 14px;
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+
+        .service-description {
+            font-size: 11px;
+            color: #666;
+            line-height: 1.3;
+        }
+
+        .service-price {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 14px;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            flex-shrink: 0;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a, #000000);
+            color: white;
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #FFD700, #FFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .developer-info {
+            font-size: 13px;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .developer-info a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .developer-info a:hover {
+            color: #FFA500;
+        }
+
+        .divider {
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+        }
+
+        .price-range {
+            font-size: 12px;
+            color: #000;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo">✂️</div>
+            </div>
+            <div class="salon-name">UNISEX BEAUTY STUDIO</div>
+            <div class="tagline">Where Beauty Meets Excellence</div>
+        </div>
+
+        <div class="quick-actions">
+            <a href="tel:+919876543210" class="quick-btn">
+                <span class="quick-btn-icon">📞</span>
+                <span class="quick-btn-text">Call</span>
+            </a>
+            <a href="https://wa.me/919876543210" target="_blank" class="quick-btn">
+                <span class="quick-btn-icon">💬</span>
+                <span class="quick-btn-text">WhatsApp</span>
+            </a>
+            <a href="https://instagram.com/yoursalon" target="_blank" class="quick-btn">
+                <span class="quick-btn-icon">📸</span>
+                <span class="quick-btn-text">Instagram</span>
+            </a>
+        </div>
+
+        <div class="contact-section">
+            <div class="contact-card">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <div style="font-weight: 700; margin-bottom: 3px;">Visit Us</div>
+                        <div style="color: #666; font-size: 14px;">123 Main Street, Downtown, City - 673001</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div>
+                        <div style="font-weight: 700; margin-bottom: 3px;">Opening Hours</div>
+                        <div style="color: #666; font-size: 14px;">Mon - Sat: 9:00 AM - 8:00 PM</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <div style="font-weight: 700; margin-bottom: 3px;">Email Us</div>
+                        <div style="color: #666; font-size: 14px;">contact@unisexbeauty.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-section">
+            <div class="section-title">Our Premium Services</div>
+            <div class="services-grid">
+                <button class="service-card" onclick="showServices('men')">
+                    <span class="service-card-icon">👨</span>
+                    <div class="service-card-title">Men's<br>Services</div>
+                </button>
+                <button class="service-card" onclick="showServices('women')">
+                    <span class="service-card-icon">👩</span>
+                    <div class="service-card-title">Women's<br>Services</div>
+                </button>
+            </div>
+        </div>
+
+        <div class="social-section">
+            <div class="section-title">Connect With Us</div>
+            <div class="social-grid">
+                <a href="tel:+919876543210" class="social-btn call-btn">
+                    <span class="social-icon">📞</span>
+                    <span>Call Now - +91 98765 43210</span>
+                </a>
+                <a href="https://wa.me/919876543210?text=Hi! I'd like to book an appointment at Unisex Beauty Studio" target="_blank" class="social-btn whatsapp-btn">
+                    <span class="social-icon">💬</span>
+                    <span>Book via WhatsApp</span>
+                </a>
+                <a href="https://instagram.com/yoursalon" target="_blank" class="social-btn instagram-btn">
+                    <span class="social-icon">📸</span>
+                    <span>Follow on Instagram</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-title">Developed by SAK TECH</div>
+            <div class="divider"></div>
+            <div class="developer-info">
+                📧 <a href="mailto:k007cart@gmail.com">k007cart@gmail.com</a><br>
+                📱 <a href="tel:+917560920774">+91 7560920774</a><br>
+                📸 <a href="https://instagram.com/sak.teck" target="_blank">@sak.teck</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Men's Services Modal -->
+    <div id="menModal" class="modal">
+        <div class="modal-wrapper">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close-btn" onclick="closeModal('menModal')">&times;</button>
+                    <div class="modal-title-section">
+                        <div class="modal-icon">👨</div>
+                        <div class="modal-title-text">
+                            <div class="modal-title">Men's Services</div>
+                            <div class="modal-subtitle">Premium grooming for gentlemen</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <!-- Hair Cuts -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💇</div>
+                            <div class="category-title">Hair Cuts</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">01</div>
+                            <div class="service-info">
+                                <div class="service-name">Haircut - Stylist</div>
+                            </div>
+                            <div class="service-price">₹220</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">02</div>
+                            <div class="service-info">
+                                <div class="service-name">Haircut - Senior Stylist</div>
+                            </div>
+                            <div class="service-price">₹350</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">03</div>
+                            <div class="service-info">
+                                <div class="service-name">Head Shave</div>
+                            </div>
+                            <div class="service-price">₹250</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">04</div>
+                            <div class="service-info">
+                                <div class="service-name">Kids Cut - Boy (Below 10 years)</div>
+                            </div>
+                            <div class="service-price">₹180</div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Wash & Styling -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🧴</div>
+                            <div class="category-title">Hair Wash & Styling</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">05</div>
+                            <div class="service-info">
+                                <div class="service-name">Styling Alone</div>
+                            </div>
+                            <div class="service-price">₹120</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">06</div>
+                            <div class="service-info">
+                                <div class="service-name">Regular Shampooing</div>
+                            </div>
+                            <div class="service-price">₹150</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">07</div>
+                            <div class="service-info">
+                                <div class="service-name">Elite Shampooing</div>
+                            </div>
+                            <div class="service-price">₹250</div>
+                        </div>
+                    </div>
+
+                    <!-- Beard Services -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🧔</div>
+                            <div class="category-title">Beard Services</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">08</div>
+                            <div class="service-info">
+                                <div class="service-name">Beard Zero Trim</div>
+                            </div>
+                            <div class="service-price">₹60</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">09</div>
+                            <div class="service-info">
+                                <div class="service-name">Shave</div>
+                            </div>
+                            <div class="service-price">₹110</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">10</div>
+                            <div class="service-info">
+                                <div class="service-name">Moustache Zero Trim</div>
+                            </div>
+                            <div class="service-price">₹30</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">11</div>
+                            <div class="service-info">
+                                <div class="service-name">Beard Shape-Up</div>
+                            </div>
+                            <div class="service-price">₹150</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">12</div>
+                            <div class="service-info">
+                                <div class="service-name">Beard Styling</div>
+                            </div>
+                            <div class="service-price">₹220</div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Color -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🎨</div>
+                            <div class="category-title">Hair Color</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">13</div>
+                            <div class="service-info">
+                                <div class="service-name">Global Natural</div>
+                            </div>
+                            <div class="service-price">₹900</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">14</div>
+                            <div class="service-info">
+                                <div class="service-name">Global Fashion</div>
+                            </div>
+                            <div class="service-price">₹1600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">15</div>
+                            <div class="service-info">
+                                <div class="service-name">Global Highlights</div>
+                            </div>
+                            <div class="service-price">₹2000</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">16</div>
+                            <div class="service-info">
+                                <div class="service-name">Creative Coloring</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹2200+</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Beard Color -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🖌️</div>
+                            <div class="category-title">Beard Color</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">17</div>
+                            <div class="service-info">
+                                <div class="service-name">Grey Coverage</div>
+                            </div>
+                            <div class="service-price">₹350</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">18</div>
+                            <div class="service-info">
+                                <div class="service-name">Fashion Color</div>
+                            </div>
+                            <div class="service-price">₹500</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">19</div>
+                            <div class="service-info">
+                                <div class="service-name">Moustache Color</div>
+                            </div>
+                            <div class="service-price">₹100</div>
+                        </div>
+                    </div>
+
+                    <!-- Massage -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💆</div>
+                            <div class="category-title">Reflexology</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">20</div>
+                            <div class="service-info">
+                                <div class="service-name">Head Massage - 30 min</div>
+                            </div>
+                            <div class="service-price">₹599</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">21</div>
+                            <div class="service-info">
+                                <div class="service-name">Head Massage - 45 min</div>
+                            </div>
+                            <div class="service-price">₹799</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">22</div>
+                            <div class="service-info">
+                                <div class="service-name">Foot Reflexology - 20 min</div>
+                            </div>
+                            <div class="service-price">₹500</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">23</div>
+                            <div class="service-info">
+                                <div class="service-name">Foot Reflexology - 40 min</div>
+                            </div>
+                            <div class="service-price">₹1000</div>
+                        </div>
+                    </div>
+
+                    <!-- Makeovers -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">✨</div>
+                            <div class="category-title">Make Overs</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">24</div>
+                            <div class="service-info">
+                                <div class="service-name">Men Party Make Over</div>
+                            </div>
+                            <div class="service-price">₹2299</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">25</div>
+                            <div class="service-info">
+                                <div class="service-name">Groom Make Over</div>
+                            </div>
+                            <div class="service-price">₹4999</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Women's Services Modal -->
+    <div id="womenModal" class="modal">
+        <div class="modal-wrapper">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close-btn" onclick="closeModal('womenModal')">&times;</button>
+                    <div class="modal-title-section">
+                        <div class="modal-icon">👩</div>
+                        <div class="modal-title-text">
+                            <div class="modal-title">Women's Services</div>
+                            <div class="modal-subtitle">Luxury beauty treatments</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <!-- Hair Cuts -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💇</div>
+                            <div class="category-title">Hair Cuts</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">01</div>
+                            <div class="service-info">
+                                <div class="service-name">Hair Cut</div>
+                            </div>
+                            <div class="service-price">₹400</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">02</div>
+                            <div class="service-info">
+                                <div class="service-name">Hair Trim</div>
+                            </div>
+                            <div class="service-price">₹400</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">03</div>
+                            <div class="service-info">
+                                <div class="service-name">Layer Trim - Stylist</div>
+                            </div>
+                            <div class="service-price">₹650</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">04</div>
+                            <div class="service-info">
+                                <div class="service-name">Modern Boy Cut</div>
+                            </div>
+                            <div class="service-price">₹900</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">05</div>
+                            <div class="service-info">
+                                <div class="service-name">Advanced Layer - Senior Stylist</div>
+                            </div>
+                            <div class="service-price">₹1200</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">06</div>
+                            <div class="service-info">
+                                <div class="service-name">Advanced Cut - Creative Director</div>
+                            </div>
+                            <div class="service-price">₹1500</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">07</div>
+                            <div class="service-info">
+                                <div class="service-name">Fringe/Bangs</div>
+                            </div>
+                            <div class="service-price">₹150</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">08</div>
+                            <div class="service-info">
+                                <div class="service-name">Kids Cut - Girls (Below 10 years)</div>
+                            </div>
+                            <div class="service-price">₹300</div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Wash -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🧴</div>
+                            <div class="category-title">Hair Wash</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">09</div>
+                            <div class="service-info">
+                                <div class="service-name">Regular Shampoo - Medium Hair</div>
+                            </div>
+                            <div class="service-price">₹300</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">10</div>
+                            <div class="service-info">
+                                <div class="service-name">Regular Shampoo - Long Hair</div>
+                            </div>
+                            <div class="service-price">₹450</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">11</div>
+                            <div class="service-info">
+                                <div class="service-name">Specialized Shampoo - Medium Hair</div>
+                            </div>
+                            <div class="service-price">₹350</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">12</div>
+                            <div class="service-info">
+                                <div class="service-name">Specialized Shampoo - Long Hair</div>
+                            </div>
+                            <div class="service-price">₹500</div>
+                        </div>
+                    </div>
+
+                    <!-- Blow Outs -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💨</div>
+                            <div class="category-title">Blow Outs & Styling</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">13</div>
+                            <div class="service-info">
+                                <div class="service-name">Ironing</div>
+                            </div>
+                            <div class="service-price">₹600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">14</div>
+                            <div class="service-info">
+                                <div class="service-name">In/Out Curls</div>
+                            </div>
+                            <div class="service-price">₹650</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">15</div>
+                            <div class="service-info">
+                                <div class="service-name">Tongs</div>
+                            </div>
+                            <div class="service-price">₹900</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">16</div>
+                            <div class="service-info">
+                                <div class="service-name">Hair Up Do</div>
+                            </div>
+                            <div class="service-price">₹1200</div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Transformation -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">✨</div>
+                            <div class="category-title">Hair Transformation - Up to Neck</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">17</div>
+                            <div class="service-info">
+                                <div class="service-name">Hair Smoothening</div>
+                            </div>
+                            <div class="service-price">₹1699</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">18</div>
+                            <div class="service-info">
+                                <div class="service-name">Hair Straightening</div>
+                            </div>
+                            <div class="service-price">₹1899</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">19</div>
+                            <div class="service-info">
+                                <div class="service-name">Keratinized</div>
+                            </div>
+                            <div class="service-price">₹2299</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">20</div>
+                            <div class="service-info">
+                                <div class="service-name">Biotin+</div>
+                            </div>
+                            <div class="service-price">₹2999</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">21</div>
+                            <div class="service-info">
+                                <div class="service-name">Nanoplastia+</div>
+                            </div>
+                            <div class="service-price">₹3199</div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Transformation - Below Neck -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">✨</div>
+                            <div class="category-title">Hair Transformation - Below Neck</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">22</div>
+                            <div class="service-info">
+                                <div class="service-name">Hair Smoothening</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹1899+</span></div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">23</div>
+                            <div class="service-info">
+                                <div class="service-name">Hair Straightening</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹2099+</span></div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">24</div>
+                            <div class="service-info">
+                                <div class="service-name">Keratinized</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹4499+</span></div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">25</div>
+                            <div class="service-info">
+                                <div class="service-name">Biotin+</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹5999+</span></div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">26</div>
+                            <div class="service-info">
+                                <div class="service-name">Nanoplastia+</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹6499+</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Color - Natural with Ammonia -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🎨</div>
+                            <div class="category-title">Natural Color (with Ammonia)</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">27</div>
+                            <div class="service-info">
+                                <div class="service-name">Tint Re-growth</div>
+                            </div>
+                            <div class="service-price">₹799</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">28</div>
+                            <div class="service-info">
+                                <div class="service-name">Medium Length (Up to Mid Back)</div>
+                            </div>
+                            <div class="service-price">₹1499</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">29</div>
+                            <div class="service-info">
+                                <div class="service-name">Long Hair (Below Mid Back)</div>
+                            </div>
+                            <div class="service-price">₹2199</div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Color - Natural without Ammonia -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🌿</div>
+                            <div class="category-title">Natural Color (Ammonia-Free)</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">30</div>
+                            <div class="service-info">
+                                <div class="service-name">Tint Re-growth</div>
+                            </div>
+                            <div class="service-price">₹999</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">31</div>
+                            <div class="service-info">
+                                <div class="service-name">Medium Length</div>
+                            </div>
+                            <div class="service-price">₹1899</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">32</div>
+                            <div class="service-info">
+                                <div class="service-name">Long Hair</div>
+                            </div>
+                            <div class="service-price">₹2499</div>
+                        </div>
+                    </div>
+
+                    <!-- Fashion Color -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🌈</div>
+                            <div class="category-title">Fashion Color</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">33</div>
+                            <div class="service-info">
+                                <div class="service-name">Tint Re-growth</div>
+                            </div>
+                            <div class="service-price">₹1399</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">34</div>
+                            <div class="service-info">
+                                <div class="service-name">Medium Length</div>
+                            </div>
+                            <div class="service-price">₹2299</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">35</div>
+                            <div class="service-info">
+                                <div class="service-name">Long Hair</div>
+                            </div>
+                            <div class="service-price">₹2899</div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Hair Coloring -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💫</div>
+                            <div class="category-title">Advanced Coloring</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">36</div>
+                            <div class="service-info">
+                                <div class="service-name">Balayage</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹6999+</span></div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">37</div>
+                            <div class="service-info">
+                                <div class="service-name">Ombre</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹6999+</span></div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">38</div>
+                            <div class="service-info">
+                                <div class="service-name">Global Highlights</div>
+                                <div class="service-description">Price on consultation</div>
+                            </div>
+                            <div class="service-price">POC</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">39</div>
+                            <div class="service-info">
+                                <div class="service-name">Partial Highlights</div>
+                                <div class="service-description">Price on consultation</div>
+                            </div>
+                            <div class="service-price">POC</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">40</div>
+                            <div class="service-info">
+                                <div class="service-name">Per Streaks</div>
+                            </div>
+                            <div class="service-price"><span class="price-range">₹399+</span></div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">41</div>
+                            <div class="service-info">
+                                <div class="service-name">Smart Bond - Short Hair</div>
+                            </div>
+                            <div class="service-price">₹400</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">42</div>
+                            <div class="service-info">
+                                <div class="service-name">Smart Bond - Long Hair</div>
+                            </div>
+                            <div class="service-price">₹700</div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Care - Classic -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💆</div>
+                            <div class="category-title">Hair Care - Classic</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">43</div>
+                            <div class="service-info">
+                                <div class="service-name">Purifying/Detoxifying/Repairing</div>
+                                <div class="service-description">Medium: ₹480 | Long: ₹640</div>
+                            </div>
+                            <div class="service-price">₹480</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">44</div>
+                            <div class="service-info">
+                                <div class="service-name">Deep Nourishing</div>
+                                <div class="service-description">Medium: ₹480 | Long: ₹640</div>
+                            </div>
+                            <div class="service-price">₹480</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">45</div>
+                            <div class="service-info">
+                                <div class="service-name">Smoothening/Anti-Friz</div>
+                                <div class="service-description">Medium: ₹480 | Long: ₹640</div>
+                            </div>
+                            <div class="service-price">₹480</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">46</div>
+                            <div class="service-info">
+                                <div class="service-name">Color Freeze</div>
+                                <div class="service-description">Medium: ₹480 | Long: ₹640</div>
+                            </div>
+                            <div class="service-price">₹480</div>
+                        </div>
+                    </div>
+
+                    <!-- Hair Care - Expert -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">⭐</div>
+                            <div class="category-title">Hair Care - Expert</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">47</div>
+                            <div class="service-info">
+                                <div class="service-name">All Treatments - Expert</div>
+                                <div class="service-description">Medium: ₹960 | Long: ₹1480</div>
+                            </div>
+                            <div class="service-price">₹960</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">48</div>
+                            <div class="service-info">
+                                <div class="service-name">Classic Scalp Care</div>
+                                <div class="service-description">Medium: ₹520 | Long: ₹640</div>
+                            </div>
+                            <div class="service-price">₹520</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">49</div>
+                            <div class="service-info">
+                                <div class="service-name">Expert Scalp Care</div>
+                                <div class="service-description">Medium: ₹1040 | Long: ₹1480</div>
+                            </div>
+                            <div class="service-price">₹1040</div>
+                        </div>
+                    </div>
+
+                    <!-- Facials -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">✨</div>
+                            <div class="category-title">Facial Treatments</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">50</div>
+                            <div class="service-info">
+                                <div class="service-name">Glow Renewal (Normal Skin)</div>
+                            </div>
+                            <div class="service-price">₹600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">51</div>
+                            <div class="service-info">
+                                <div class="service-name">Glow Renewal (Acne Prone)</div>
+                            </div>
+                            <div class="service-price">₹700</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">52</div>
+                            <div class="service-info">
+                                <div class="service-name">Vintage Facial (Normal Skin)</div>
+                            </div>
+                            <div class="service-price">₹900</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">53</div>
+                            <div class="service-info">
+                                <div class="service-name">Vintage Facial (Acne Prone)</div>
+                            </div>
+                            <div class="service-price">₹1100</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">54</div>
+                            <div class="service-info">
+                                <div class="service-name">Premier Facial (Normal Skin)</div>
+                            </div>
+                            <div class="service-price">₹1600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">55</div>
+                            <div class="service-info">
+                                <div class="service-name">Premier Facial (Acne Prone)</div>
+                            </div>
+                            <div class="service-price">₹1900</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">56</div>
+                            <div class="service-info">
+                                <div class="service-name">Signature Glow</div>
+                            </div>
+                            <div class="service-price">₹2500</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">57</div>
+                            <div class="service-info">
+                                <div class="service-name">Elite Facial (Normal Skin)</div>
+                            </div>
+                            <div class="service-price">₹3800</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">58</div>
+                            <div class="service-info">
+                                <div class="service-name">Elite Facial (Acne Prone)</div>
+                            </div>
+                            <div class="service-price">₹4000</div>
+                        </div>
+                    </div>
+
+                    <!-- Facial Add-ons -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🎭</div>
+                            <div class="category-title">Facial Add-On Masks</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">59</div>
+                            <div class="service-info">
+                                <div class="service-name">Creme Mask</div>
+                            </div>
+                            <div class="service-price">₹350</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">60</div>
+                            <div class="service-info">
+                                <div class="service-name">Skin Revitalizing Mask</div>
+                            </div>
+                            <div class="service-price">₹600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">61</div>
+                            <div class="service-info">
+                                <div class="service-name">Skin Restoration Mask</div>
+                            </div>
+                            <div class="service-price">₹600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">62</div>
+                            <div class="service-info">
+                                <div class="service-name">Ultimate Skin Glow</div>
+                            </div>
+                            <div class="service-price">₹900</div>
+                        </div>
+                    </div>
+
+                    <!-- De-Tan -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">☀️</div>
+                            <div class="category-title">De-Tan Services</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">63</div>
+                            <div class="service-info">
+                                <div class="service-name">Full Face & Neck</div>
+                            </div>
+                            <div class="service-price">₹400</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">64</div>
+                            <div class="service-info">
+                                <div class="service-name">Face, Neck & Blouse Line</div>
+                            </div>
+                            <div class="service-price">₹460</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">65</div>
+                            <div class="service-info">
+                                <div class="service-name">Under Arms</div>
+                            </div>
+                            <div class="service-price">₹200</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">66</div>
+                            <div class="service-info">
+                                <div class="service-name">Half/Full Arms</div>
+                                <div class="service-description">Half: ₹260 | Full: ₹300</div>
+                            </div>
+                            <div class="service-price">₹260</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">67</div>
+                            <div class="service-info">
+                                <div class="service-name">Half/Full Back</div>
+                                <div class="service-description">Half: ₹450 | Full: ₹600</div>
+                            </div>
+                            <div class="service-price">₹450</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">68</div>
+                            <div class="service-info">
+                                <div class="service-name">Half/Full Legs</div>
+                                <div class="service-description">Half: ₹400 | Full: ₹550</div>
+                            </div>
+                            <div class="service-price">₹400</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">69</div>
+                            <div class="service-info">
+                                <div class="service-name">Full Body</div>
+                            </div>
+                            <div class="service-price">₹1800</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">70</div>
+                            <div class="service-info">
+                                <div class="service-name">Feet</div>
+                            </div>
+                            <div class="service-price">₹200</div>
+                        </div>
+                    </div>
+
+                    <!-- Threading -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🧵</div>
+                            <div class="category-title">Threading</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">71</div>
+                            <div class="service-info">
+                                <div class="service-name">Eyebrow</div>
+                            </div>
+                            <div class="service-price">₹50</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">72</div>
+                            <div class="service-info">
+                                <div class="service-name">Upper Lip</div>
+                            </div>
+                            <div class="service-price">₹40</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">73</div>
+                            <div class="service-info">
+                                <div class="service-name">Chin Upper/Lower</div>
+                            </div>
+                            <div class="service-price">₹60</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">74</div>
+                            <div class="service-info">
+                                <div class="service-name">Forehead</div>
+                            </div>
+                            <div class="service-price">₹50</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">75</div>
+                            <div class="service-info">
+                                <div class="service-name">Sides</div>
+                            </div>
+                            <div class="service-price">₹60</div>
+                        </div>
+                    </div>
+
+                    <!-- Waxing -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🕯️</div>
+                            <div class="category-title">Waxing (Regular/Premium)</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">76</div>
+                            <div class="service-info">
+                                <div class="service-name">Upper Lips</div>
+                                <div class="service-description">Regular: ₹60 | Premium: ₹80</div>
+                            </div>
+                            <div class="service-price">₹60</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">77</div>
+                            <div class="service-info">
+                                <div class="service-name">Chin</div>
+                                <div class="service-description">Regular: ₹60 | Premium: ₹80</div>
+                            </div>
+                            <div class="service-price">₹60</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">78</div>
+                            <div class="service-info">
+                                <div class="service-name">Sides</div>
+                            </div>
+                            <div class="service-price">₹120</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">79</div>
+                            <div class="service-info">
+                                <div class="service-name">Full Face</div>
+                            </div>
+                            <div class="service-price">₹240</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">80</div>
+                            <div class="service-info">
+                                <div class="service-name">Blouse Line</div>
+                                <div class="service-description">Regular: ₹260 | Premium: ₹330</div>
+                            </div>
+                            <div class="service-price">₹260</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">81</div>
+                            <div class="service-info">
+                                <div class="service-name">Under Arms</div>
+                                <div class="service-description">Regular: ₹150 | Premium: ₹190</div>
+                            </div>
+                            <div class="service-price">₹150</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">82</div>
+                            <div class="service-info">
+                                <div class="service-name">Half Arms</div>
+                                <div class="service-description">Regular: ₹220 | Premium: ₹280</div>
+                            </div>
+                            <div class="service-price">₹220</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">83</div>
+                            <div class="service-info">
+                                <div class="service-name">Full Arms</div>
+                                <div class="service-description">Regular: ₹300 | Premium: ₹380</div>
+                            </div>
+                            <div class="service-price">₹300</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">84</div>
+                            <div class="service-info">
+                                <div class="service-name">Half Back</div>
+                                <div class="service-description">Regular: ₹360 | Premium: ₹450</div>
+                            </div>
+                            <div class="service-price">₹360</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">85</div>
+                            <div class="service-info">
+                                <div class="service-name">Full Back</div>
+                                <div class="service-description">Regular: ₹420 | Premium: ₹530</div>
+                            </div>
+                            <div class="service-price">₹420</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">86</div>
+                            <div class="service-info">
+                                <div class="service-name">Half Legs</div>
+                                <div class="service-description">Regular: ₹300 | Premium: ₹380</div>
+                            </div>
+                            <div class="service-price">₹300</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">87</div>
+                            <div class="service-info">
+                                <div class="service-name">Full Legs</div>
+                                <div class="service-description">Regular: ₹450 | Premium: ₹560</div>
+                            </div>
+                            <div class="service-price">₹450</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">88</div>
+                            <div class="service-info">
+                                <div class="service-name">Bikini Line</div>
+                                <div class="service-description">Regular: ₹600 | Premium: ₹750</div>
+                            </div>
+                            <div class="service-price">₹600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">89</div>
+                            <div class="service-info">
+                                <div class="service-name">Full Bikini</div>
+                                <div class="service-description">Regular: ₹1200 | Premium: ₹1500</div>
+                            </div>
+                            <div class="service-price">₹1200</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">90</div>
+                            <div class="service-info">
+                                <div class="service-name">Full Body</div>
+                                <div class="service-description">Regular: ₹2000 | Premium: ₹2500</div>
+                            </div>
+                            <div class="service-price">₹2000</div>
+                        </div>
+                    </div>
+
+                    <!-- Nails -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💅</div>
+                            <div class="category-title">Nail Care</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">91</div>
+                            <div class="service-info">
+                                <div class="service-name">Nail Paint Removal</div>
+                            </div>
+                            <div class="service-price">₹60</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">92</div>
+                            <div class="service-info">
+                                <div class="service-name">Nail Paint</div>
+                            </div>
+                            <div class="service-price">₹150</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">93</div>
+                            <div class="service-info">
+                                <div class="service-name">Top Coat</div>
+                            </div>
+                            <div class="service-price">₹50</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">94</div>
+                            <div class="service-info">
+                                <div class="service-name">Cut & File Hand</div>
+                            </div>
+                            <div class="service-price">₹100</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">95</div>
+                            <div class="service-info">
+                                <div class="service-name">Cut & File Feet</div>
+                            </div>
+                            <div class="service-price">₹150</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">96</div>
+                            <div class="service-info">
+                                <div class="service-name">French Polish</div>
+                            </div>
+                            <div class="service-price">₹250</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">97</div>
+                            <div class="service-info">
+                                <div class="service-name">Nail Art Fingers</div>
+                            </div>
+                            <div class="service-price">₹400</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">98</div>
+                            <div class="service-info">
+                                <div class="service-name">Nail Art Toes</div>
+                            </div>
+                            <div class="service-price">₹700</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">99</div>
+                            <div class="service-info">
+                                <div class="service-name">Gel Polish Fingers</div>
+                            </div>
+                            <div class="service-price">₹950</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">100</div>
+                            <div class="service-info">
+                                <div class="service-name">Removal of Gel Polish</div>
+                            </div>
+                            <div class="service-price">₹450</div>
+                        </div>
+                    </div>
+
+                    <!-- Spa Services -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🧖</div>
+                            <div class="category-title">Spa Services</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">101</div>
+                            <div class="service-info">
+                                <div class="service-name">Vintage Pedicure</div>
+                            </div>
+                            <div class="service-price">₹650</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">102</div>
+                            <div class="service-info">
+                                <div class="service-name">Premier Pedicure</div>
+                            </div>
+                            <div class="service-price">₹900</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">103</div>
+                            <div class="service-info">
+                                <div class="service-name">Elite Pedicure</div>
+                            </div>
+                            <div class="service-price">₹1200</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">104</div>
+                            <div class="service-info">
+                                <div class="service-name">Foot Repair</div>
+                            </div>
+                            <div class="service-price">₹2000</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">105</div>
+                            <div class="service-info">
+                                <div class="service-name">Vintage Manicure</div>
+                            </div>
+                            <div class="service-price">₹450</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">106</div>
+                            <div class="service-info">
+                                <div class="service-name">Premier Manicure</div>
+                            </div>
+                            <div class="service-price">₹600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">107</div>
+                            <div class="service-info">
+                                <div class="service-name">Elite Manicure</div>
+                            </div>
+                            <div class="service-price">₹900</div>
+                        </div>
+                    </div>
+
+                    <!-- Body Spa -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💆</div>
+                            <div class="category-title">Body Spa</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">108</div>
+                            <div class="service-info">
+                                <div class="service-name">Coco Butter Massage (60 min)</div>
+                            </div>
+                            <div class="service-price">₹2400</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">109</div>
+                            <div class="service-info">
+                                <div class="service-name">Aroma Oil Massage (60 min)</div>
+                            </div>
+                            <div class="service-price">₹2400</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">110</div>
+                            <div class="service-info">
+                                <div class="service-name">Body Polish</div>
+                            </div>
+                            <div class="service-price">₹3000</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">111</div>
+                            <div class="service-info">
+                                <div class="service-name">Body Scrub + Wrap</div>
+                            </div>
+                            <div class="service-price">₹2800</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">112</div>
+                            <div class="service-info">
+                                <div class="service-name">Polish + Wrap + Massage</div>
+                            </div>
+                            <div class="service-price">₹4600</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">113</div>
+                            <div class="service-info">
+                                <div class="service-name">Steam Bath</div>
+                            </div>
+                            <div class="service-price">₹500</div>
+                        </div>
+                    </div>
+
+                    <!-- Reflexology -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">🦶</div>
+                            <div class="category-title">Reflexology</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">114</div>
+                            <div class="service-info">
+                                <div class="service-name">Head Massage - 30 min</div>
+                            </div>
+                            <div class="service-price">₹599</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">115</div>
+                            <div class="service-info">
+                                <div class="service-name">Head Massage - 45 min</div>
+                            </div>
+                            <div class="service-price">₹799</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">116</div>
+                            <div class="service-info">
+                                <div class="service-name">Foot Reflexology - 20 min</div>
+                            </div>
+                            <div class="service-price">₹500</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">117</div>
+                            <div class="service-info">
+                                <div class="service-name">Foot Reflexology - 40 min</div>
+                            </div>
+                            <div class="service-price">₹1000</div>
+                        </div>
+                    </div>
+
+                    <!-- Makeovers -->
+                    <div class="service-category-section">
+                        <div class="category-header">
+                            <div class="category-icon">💄</div>
+                            <div class="category-title">Make Overs</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">118</div>
+                            <div class="service-info">
+                                <div class="service-name">Women Party Make Over</div>
+                            </div>
+                            <div class="service-price">₹3399</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">119</div>
+                            <div class="service-info">
+                                <div class="service-name">Bride Traditional Make Over</div>
+                            </div>
+                            <div class="service-price">₹9999</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">120</div>
+                            <div class="service-info">
+                                <div class="service-name">Bride Pro Make Over</div>
+                            </div>
+                            <div class="service-price">₹14999</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-number">121</div>
+                            <div class="service-info">
+                                <div class="service-name">Outdoor Allowance</div>
+                            </div>
+                            <div class="service-price">₹2000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showServices(type) {
+            const modalId = type + 'Modal';
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.querySelectorAll('.modal-wrapper').forEach(wrapper => {
+            wrapper.addEventListener('scroll', function() {
+                if (this.scrollTop > 50) {
+                    this.querySelector('.modal-header').style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                } else {
+                    this.querySelector('.modal-header').style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
